@@ -2,41 +2,53 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walking Skeleton - Login</title>
+    <title>Walking Skeleton - Login Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
+        .login-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #message { margin-top: 15px; text-align: center; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h2>Đăng nhập hệ thống</h2>
+
+<div class="login-card">
+    <h2>Đăng Nhập</h2>
     <form id="loginForm">
-        <div>
-            <label for="username">Tài khoản:</label>
+        <div class="form-group">
+            <label for="username">Tên đăng nhập:</label>
             <input type="text" id="username" required>
         </div>
-        <br>
-        <div>
+        <div class="form-group">
             <label for="password">Mật khẩu:</label>
             <input type="password" id="password" required>
         </div>
-        <br>
-        <button type="submit">Đăng nhập</button>
+        <button type="submit">Đăng Nhập</button>
     </form>
-    <p id="message"></p>
+    <div id="message"></div>
+</div>
 
-    <script src="login.js"></script>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            
-            if (validateLogin(user, pass)) {
-                document.getElementById('message').style.color = 'green';
-                document.getElementById('message').innerText = 'Đăng nhập thành công!';
-            } else {
-                document.getElementById('message').style.color = 'red';
-                document.getElementById('message').innerText = 'Sai tài khoản hoặc mật khẩu!';
-            }
-        });
-    </script>
+<script src="login.js"></script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const messageDiv = document.getElementById('message');
+
+        if (login(user, pass)) {
+            messageDiv.style.color = 'green';
+            messageDiv.textContent = 'Đăng nhập thành công!';
+        } else {
+            messageDiv.style.color = 'red';
+            messageDiv.textContent = 'Tên đăng nhập hoặc mật khẩu sai!';
+        }
+    });
+</script>
+
 </body>
 </html>
