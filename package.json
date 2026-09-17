@@ -1,0 +1,12 @@
+{
+  "name": "vlu-qe-walking-skeleton",
+  "version": "1.0.0",
+  "description": "Walking skeleton project with login and unit test",
+  "main": "login.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
