@@ -1,5 +1,5 @@
 function login(username, password) {
-    return username === "admin" && password === "123";
+    return username === "admin" && password === "1234";
 }
 
 document.getElementById("loginForm").addEventListener("submit", function(event) {
