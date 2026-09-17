@@ -1,4 +1,4 @@
-function validateLogin(username, password) {
+function login(username, password) {
     if (username === 'admin' && password === '123') {
         return true;
     }
@@ -6,5 +6,5 @@ function validateLogin(username, password) {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { validateLogin };
+    module.exports = login;
 }
