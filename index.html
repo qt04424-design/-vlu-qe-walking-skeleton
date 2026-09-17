@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking Skeleton - Login</title>
+</head>
+<body>
+    <h2>Đăng nhập hệ thống</h2>
+    <form id="loginForm">
+        <div>
+            <label for="username">Tài khoản:</label>
+            <input type="text" id="username" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" required>
+        </div>
+        <br>
+        <button type="submit">Đăng nhập</button>
+    </form>
+    <p id="message"></p>
+
+    <script src="login.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if (validateLogin(user, pass)) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerText = 'Đăng nhập thành công!';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerText = 'Sai tài khoản hoặc mật khẩu!';
+            }
+        });
+    </script>
+</body>
+</html>
