@@ -1,31 +1,27 @@
-name: CI Pipeline
+name: Software Testing CI - Commit Stage Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  commit-stage-test:
+    name: Run Jest Unit Tests & Health Checks
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-
     steps:
-    - name: Mã nguồn Checkout
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Cấu hình Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Cài đặt thư viện (Dependencies)
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Chạy Unit Test (Jest)
-      run: npm test
+      - name: Execute Jest Unit Tests
+        run: npm test
